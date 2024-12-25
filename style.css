@@ -1,0 +1,131 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    border: none;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 1080px;
+    background-color: #171e28;
+}
+
+div {
+    width: 500px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.moon {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #bdd0e4;
+    box-shadow: 0 0 5px 1px #bdd0e4;
+    z-index: 1;
+}
+
+.sun {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #fbac13;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: auto;
+    box-shadow: 0 0 15px 10px #fbac13;
+}
+.moon::after{
+    background-color: #212a33;
+    border-radius: 50%;
+    content: "";
+    width: 100%;
+    height: 100%;
+}
+.sun::after{
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-image: url("img/sun.png");
+}
+@keyframes fazes{
+    from{
+        margin-left: -210px;
+    }
+    49.9%{
+        background-color: #212a33;
+    }
+    50%{
+        background-color: #bdd0e4;
+        margin-left: 110px;
+    }
+    99.9%{
+        background-color: #bdd0e4;
+    }
+    to{
+        background-color: #212a33;
+        margin-left: -210px;
+    }
+}
+@keyframes move{
+    from{
+        margin-right: 50px;
+        z-index: 1;
+    }
+    49.9%{
+        z-index: 1;
+    }
+    50%{
+        margin-right: -250px;
+        z-index: -1;
+    }
+    99.9%{
+        z-index: -1;
+    }
+    to{
+        margin-right: 50px;
+        z-index: 1;
+    }
+}
+@keyframes dance{
+    from{
+        transform: rotate(30deg);
+    }
+    to{
+        transform: rotate(-30deg);
+    }
+}
+.moon::after {
+    animation-name: fazes;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-timing-function: linear;
+}
+.moon{
+    animation-name: move;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-timing-function: linear;
+}
+.sun::after{
+    animation-name: dance;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+}
